@@ -12,7 +12,7 @@
 				</div>
 				<ul class="metismenu" id="menu">
 					<li class="nav-label first">Main Menu</li>
-                    @if(auth()->user()->role_type == 1)
+                    @role('admin')
                     <li>
                         <a href="{{ route('dashboard') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-144-layout"></i>
@@ -40,8 +40,7 @@
 							<span class="nav-text">Book List</span>
                         </a>
                     </li>
-                    @endif
-                    
+                    @endrole
                 </ul>
 				<div class="copyright">
 					<p><strong>Azizul Admin Dashboard</strong> © 2023 All Rights Reserved</p>

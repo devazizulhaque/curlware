@@ -13,7 +13,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/hostels/{id}', [BookController::class, 'show'])->name('book.show');
 Route::post('/book', [BookController::class, 'store'])->name('book.store');
 
-Route::middleware('auth', 'verified', 'admin')->group(function () {
+Route::middleware('auth', 'verified', 'role:admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('hostels', HostelController::class);
     Route::resource('room-type', RoomtypeController::class);
