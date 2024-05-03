@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HostelController;
 use App\Http\Controllers\Admin\RoomtypeController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,9 @@ Route::middleware('auth', 'verified', 'role:admin')->group(function () {
     Route::get('/bookings', [BookController::class, 'index'])->name('bookings.index');
     Route::delete('/bookings/{id}', [BookController::class, 'destroy'])->name('bookings.destroy');
     Route::put('/bookings/{id}', [BookController::class, 'update'])->name('bookings.update');
+
+    Route::resource('brands', BrandController::class);
+    Route::resource('categories', CategoryController::class);
 });
 
 Route::middleware('auth', 'verified')->group(function () {
